@@ -361,7 +361,7 @@ ByteVector ByteVector::mid(uint index, uint length) const
 
   ConstIterator endIt;
 
-  if(length < size() - index)
+  if(length < 0xffffffff && length + index < size())
     endIt = d->data.begin() + index + length;
   else
     endIt = d->data.end();
